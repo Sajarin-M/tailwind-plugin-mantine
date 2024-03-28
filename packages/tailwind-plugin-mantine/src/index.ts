@@ -77,6 +77,9 @@ const pluginMantine = plugin(
   },
   {
     darkMode: ["class", '[data-mantine-color-scheme="dark"]'],
+    corePlugins: {
+      preflight: false,
+    },
     theme: {
       colors: {
         ...mantineColors,
