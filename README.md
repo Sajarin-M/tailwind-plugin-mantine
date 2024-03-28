@@ -2,17 +2,17 @@
 
 - ### Typography variables 🏗
 
-  - [ ] Font family
-  - [ ] Font size
+  - [x] ~~Font family~~
+  - [x] Font size
   - [ ] Line height
   - [ ] Headings
-  - [ ] ~~Font smoothing~~
+  - [x] ~~Font smoothing~~
 
 - ### Colors variables 🏗
 
-  - [ ] Variant colors
-  - [ ] Primary color variables
-  - [ ] Other color variables
+  - [x] Variant colors
+  - [x] Primary color variables
+  - [x] Other color variables
 
 - ### Spacing variables ✅
 - ### Border radius variables ✅
