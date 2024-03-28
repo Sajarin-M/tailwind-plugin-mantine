@@ -5,9 +5,9 @@
   "keywords": [],
   "author": "Sajarin M",
   "license": "ISC",
-  "main": "dist/index.mjs",
+  "main": "dist/index.js",
   "module": "dist/index.mjs",
-  "types": "dist/index.d.mts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -16,7 +16,7 @@
     "lint": "tsc --noEmit",
     "clean": "rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "build": "tsup src/index.ts --dts --format esm",
+    "build": "tsup src/index.ts --dts --format esm,cjs",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "pnpm run build && changeset publish"
