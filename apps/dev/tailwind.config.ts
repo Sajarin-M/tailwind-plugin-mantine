@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { pluginMantineV2 } from "../../packages/tailwind-plugin-mantine/src/index";
+import pluginMantineV2 from "../../packages/tailwind-plugin-mantine/src/index";
 
 const config: Config = {
   content: [

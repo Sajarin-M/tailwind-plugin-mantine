@@ -14,7 +14,7 @@
     "prepare": "husky",
     "lint": "turbo lint",
     "clean": "rm -rf node_modules",
-    "dev": "turbo dev",
+    "dev": "sh scripts/dev.sh",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",
     "version-packages": "changeset version",
