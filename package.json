@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "prepare_CURRENTLY_IGNORED": "husky",
-    "lint": "tsc --noEmit",
+    "lint": "turbo lint",
     "clean": "rm -rf node_modules",
     "dev": "turbo dev",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",

@@ -4,6 +4,7 @@
     "dev": {
       "cache": false,
       "persistent": false
-    }
+    },
+    "lint": {}
   }
 }
