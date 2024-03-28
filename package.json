@@ -11,7 +11,7 @@
     "packages/tailwind-plugin-mantine"
   ],
   "scripts": {
-    "prepare_CURRENTLY_IGNORED": "husky",
+    "prepare": "husky",
     "lint": "turbo lint",
     "clean": "rm -rf node_modules",
     "dev": "turbo dev",

@@ -107,3 +107,27 @@ const pluginMantine = plugin(
 );
 
 export default pluginMantine;
+
+export function pluginMantineV2(customTheme?: MantineTheme) {
+  const theme = mergeMantineTheme(DEFAULT_THEME, customTheme);
+
+  return plugin(() => {}, {
+    darkMode: ["class", '[data-mantine-color-scheme="dark"]'],
+    theme: {
+      extend: {
+        fontSize: theme.fontSizes,
+        boxShadow: theme.shadows,
+        borderRadius: theme.radius,
+        spacing: theme.spacing,
+        zIndex: {
+          // TODO no docs
+          app: "var(--mantine-z-index-app)",
+          modal: "var(--mantine-z-index-modal)",
+          popover: "var(--mantine-z-index-popover)",
+          overlay: "var(--mantine-z-index-overlay)",
+          max: "var(--mantine-z-index-max)",
+        },
+      },
+    },
+  });
+}

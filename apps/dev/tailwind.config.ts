@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import pluginMantine from "@devoss/tailwind-plugin-mantine";
+import { pluginMantineV2 } from "../../packages/tailwind-plugin-mantine/src/index";
 
 const config: Config = {
   content: [
@@ -8,6 +8,6 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {},
-  plugins: [pluginMantine],
+  plugins: [pluginMantineV2()],
 };
 export default config;
