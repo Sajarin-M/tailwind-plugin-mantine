@@ -8,7 +8,6 @@
     "skipLibCheck": true,
     "strictNullChecks": true,
     "target": "ESNext",
-    "useDefineForClassFields": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "isolatedModules": true,
