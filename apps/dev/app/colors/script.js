@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const colors = require("@devoss/tailwind-plugin-mantine").pluginMantineV2().config.theme.colors ?? {}
+const colors = require("@devoss/tailwind-plugin-mantine").default().config.theme.colors ?? {}
 
 
 

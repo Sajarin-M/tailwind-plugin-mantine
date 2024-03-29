@@ -4,7 +4,6 @@ import plugin from "tailwindcss/plugin";
 const filledVariants = ["filled", "filled-hover"];
 const lightVariants = ["light", "light-hover", "light-color"];
 const outlineVariants = ["outline", "outline-hover"];
-
 const otherColors = [
   "black",
   "white",
@@ -21,7 +20,7 @@ const otherColors = [
   "default-border",
 ];
 
-export default function pluginMantineV2(customTheme?: MantineTheme) {
+export default function pluginMantine(customTheme?: MantineTheme) {
   const theme = mergeMantineTheme(DEFAULT_THEME, customTheme);
 
   const primaryColorShades = Array.from({ length: 10 }).reduce(

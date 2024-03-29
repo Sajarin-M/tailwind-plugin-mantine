@@ -4,6 +4,9 @@
   "description": "Bringing Mantine and Tailwind CSS together with ease.",
   "keywords": [],
   "author": "Sajarin M",
+  "contributors": [
+    "hpnzm"
+  ],
   "license": "ISC",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -13,7 +16,6 @@
   ],
   "scripts": {
     "lint": "tsc --noEmit",
-    "clean": "rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "build": "tsup src/index.ts --dts --format esm,cjs",
     "dev": "tsup src/index.ts --watch --dts --format esm,cjs",

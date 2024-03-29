@@ -1,11 +1,6 @@
 {
-  "name": "@devoss/tailwind-plugin-mantine",
-  "version": "1.1.0",
+  "name": "tailwind-plugin-mantine-monorepo",
   "private": true,
-  "description": "Bringing Mantine and Tailwind CSS together with ease.",
-  "keywords": [],
-  "author": "Sajarin M",
-  "license": "ISC",
   "workspaces": [
     "apps/dev",
     "packages/tailwind-plugin-mantine"
@@ -13,8 +8,8 @@
   "scripts": {
     "prepare": "husky",
     "lint": "turbo lint",
-    "clean": "rm -rf node_modules",
-    "dev": "sh scripts/dev.sh",
+    "build": "turbo build",
+    "dev": "turbo dev",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",
     "version-packages": "changeset version",
@@ -26,9 +21,5 @@
     "prettier": "^3.2.4",
     "tsup": "^8.0.2",
     "turbo": "^1.13.0"
-  },
-  "peerDependencies": {
-    "@mantine/core": "*",
-    "tailwindcss": "*"
   }
 }

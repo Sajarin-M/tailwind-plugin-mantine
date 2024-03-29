@@ -5,6 +5,7 @@
       "cache": false,
       "persistent": false
     },
-    "lint": {}
+    "lint": {},
+    "build": {}
   }
 }
