@@ -19,12 +19,12 @@ export const theme = createTheme({
 });
 // tailwind.config.ts
 import type { Config } from "tailwindcss";
-import pluginMantineV2 from "@devoss/tailwind-plugin-mantine";
+import pluginMantine from "@devoss/tailwind-plugin-mantine";
 
 import { theme } from "./mantine-theme";
 const config: Config = {
   // ...
-  plugins: [pluginMantineV2(theme)],
+  plugins: [pluginMantine(theme)],
   // ...
 };
 export default config;

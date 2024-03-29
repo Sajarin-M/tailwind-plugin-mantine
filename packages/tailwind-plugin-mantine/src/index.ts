@@ -32,12 +32,12 @@ const otherColors = [
  *
  * // tailwind.config.ts
  * import type { Config } from "tailwindcss";
- * import pluginMantineV2 from "@devoss/tailwind-plugin-mantine";
+ * import pluginMantine from "@devoss/tailwind-plugin-mantine";
  * import { theme } from "./mantine-theme"
  *
  * const config: Config = {
  *   // ...
- *   plugins: [pluginMantineV2(theme)],
+ *   plugins: [pluginMantine(theme)],
  *   // ...
  * };
  * export default config;
@@ -56,7 +56,7 @@ export default function pluginMantine(customTheme?: MantineThemeOverride) {
         [`primary-${index}`]: `var(--mantine-color-${primaryColor}-${index})`,
       };
     },
-    {},
+    {}
   ) as any;
 
   const colors = Object.entries(theme.colors).reduce(
@@ -87,7 +87,7 @@ export default function pluginMantine(customTheme?: MantineThemeOverride) {
     {
       ...makeVariantColors("primary"),
       ...primaryColorShades,
-    } as any,
+    } as any
   );
 
   return plugin(() => {}, {
@@ -130,7 +130,7 @@ function makeVariantColors(colorName: string) {
   const concatedVariants = Array.prototype.concat(
     filledVariants,
     lightVariants,
-    colorName === "primary" ? [] : outlineVariants,
+    colorName === "primary" ? [] : outlineVariants
   );
 
   return concatedVariants.reduce((variantsAcc, variant) => {
