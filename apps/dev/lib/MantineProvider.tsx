@@ -1,9 +1,8 @@
 "use client";
 
-import { MantineProvider, createTheme } from "@mantine/core";
+import { MantineProvider } from "@mantine/core";
 import { PropsWithChildren } from "react";
-
-const theme = createTheme({});
+import { theme } from "./mantine-theme";
 
 export default function MantineThemeProvider({ children }: PropsWithChildren) {
   return <MantineProvider theme={theme}>{children}</MantineProvider>;

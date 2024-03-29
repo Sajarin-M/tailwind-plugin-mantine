@@ -1,12 +1,14 @@
-import { DEFAULT_THEME, MantineTheme, mergeMantineTheme } from "@mantine/core";
+import {
+  DEFAULT_THEME,
+  MantineThemeOverride,
+  mergeMantineTheme,
+} from "@mantine/core";
 import plugin from "tailwindcss/plugin";
 
 const filledVariants = ["filled", "filled-hover"];
 const lightVariants = ["light", "light-hover", "light-color"];
 const outlineVariants = ["outline", "outline-hover"];
 const otherColors = [
-  "black",
-  "white",
   "text",
   "body",
   "error",
@@ -19,8 +21,31 @@ const otherColors = [
   "default-color",
   "default-border",
 ];
-
-export default function pluginMantine(customTheme?: MantineTheme) {
+/**
+ *
+ * @usage
+ * ```tsx
+ * // mantine-theme.ts
+ * export const theme = createTheme({
+ *   // Put your mantine theme override here
+ * })
+ *
+ * // tailwind.config.ts
+ * import type { Config } from "tailwindcss";
+ * import pluginMantineV2 from "@devoss/tailwind-plugin-mantine";
+ * import { theme } from "./mantine-theme"
+ *
+ * const config: Config = {
+ *   // ...
+ *   plugins: [pluginMantineV2(theme)],
+ *   // ...
+ * };
+ * export default config;
+ *
+ * ```
+ *
+ */
+export default function pluginMantine(customTheme?: MantineThemeOverride) {
   const theme = mergeMantineTheme(DEFAULT_THEME, customTheme);
 
   const primaryColorShades = Array.from({ length: 10 }).reduce(
@@ -68,12 +93,8 @@ export default function pluginMantine(customTheme?: MantineTheme) {
   return plugin(() => {}, {
     darkMode: ["class", '[data-mantine-color-scheme="dark"]'],
     theme: {
-      colors: {
-        ...colors,
-        current: "currentColor",
-        transparent: "transparent",
-      },
       extend: {
+        colors,
         fontSize: theme.fontSizes,
         boxShadow: {
           ...theme.shadows,

@@ -7,6 +7,14 @@
   "contributors": [
     "hpnzm"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sajarin-M/tailwind-plugin-mantine",
+    "directory": "packages/tailwind-plugin-mantine"
+  },
+  "bugs": {
+    "url": "https://github.com/Sajarin-M/tailwind-plugin-mantine/issues"
+  },
   "license": "ISC",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -18,10 +26,7 @@
     "lint": "tsc --noEmit",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "build": "tsup src/index.ts --dts --format esm,cjs",
-    "dev": "tsup src/index.ts --watch --dts --format esm,cjs",
-    "changeset": "changeset",
-    "version-packages": "changeset version",
-    "release": "pnpm run build && changeset publish"
+    "dev": "tsup src/index.ts --watch --dts --format esm,cjs"
   },
   "devDependencies": {
     "tsup": "^8.0.2",
