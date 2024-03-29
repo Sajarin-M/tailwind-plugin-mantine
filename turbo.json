@@ -6,6 +6,8 @@
       "persistent": false
     },
     "lint": {},
-    "build": {}
+    "build": {
+      "dependsOn": ["^build"]
+    }
   }
 }

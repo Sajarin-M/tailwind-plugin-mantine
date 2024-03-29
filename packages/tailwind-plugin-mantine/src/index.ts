@@ -56,7 +56,7 @@ export default function pluginMantine(customTheme?: MantineThemeOverride) {
         [`primary-${index}`]: `var(--mantine-color-${primaryColor}-${index})`,
       };
     },
-    {}
+    {},
   ) as any;
 
   const colors = Object.entries(theme.colors).reduce(
@@ -87,7 +87,7 @@ export default function pluginMantine(customTheme?: MantineThemeOverride) {
     {
       ...makeVariantColors("primary"),
       ...primaryColorShades,
-    } as any
+    } as any,
   );
 
   return plugin(() => {}, {
@@ -96,6 +96,7 @@ export default function pluginMantine(customTheme?: MantineThemeOverride) {
       extend: {
         colors,
         fontSize: theme.fontSizes,
+        lineHeight: theme.lineHeights,
         boxShadow: {
           ...theme.shadows,
           DEFAULT: theme.shadows.xs,
@@ -129,7 +130,7 @@ function makeVariantColors(colorName: string) {
   const concatedVariants = Array.prototype.concat(
     filledVariants,
     lightVariants,
-    colorName === "primary" ? [] : outlineVariants
+    colorName === "primary" ? [] : outlineVariants,
   );
 
   return concatedVariants.reduce((variantsAcc, variant) => {

@@ -18,7 +18,7 @@ function Item({ className }: { className: string }) {
       ref={ref}
       className={cn(
         "h-20 relative items-center border border-red-500",
-        className
+        className,
       )}
     >
       {className} {zIndex}
@@ -32,7 +32,7 @@ export default function ZIndexPage() {
       {["z-app", "z-modal", "z-popover", "z-overlay", "z-max"].map(
         (className) => (
           <Item className={className} key={className} />
-        )
+        ),
       )}
     </div>
   );

@@ -4,7 +4,7 @@
 
   - [x] ~~Font family~~
   - [x] Font size
-  - [ ] Line height
+  - [x] Line height
   - [ ] Headings
   - [x] ~~Font smoothing~~
 

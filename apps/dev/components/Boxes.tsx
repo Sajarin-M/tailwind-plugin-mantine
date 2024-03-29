@@ -15,7 +15,7 @@ export function Boxes({
           className={cn(
             "size-20 flex justify-center items-center",
             className,
-            v
+            v,
           )}
         >
           {k}
