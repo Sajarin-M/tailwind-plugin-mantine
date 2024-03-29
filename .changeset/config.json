@@ -5,7 +5,7 @@
   "fixed": [],
   "linked": [],
   "access": "public",
-  "baseBranch": "switch-to-monorepo",
+  "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": ["dev"]
 }
