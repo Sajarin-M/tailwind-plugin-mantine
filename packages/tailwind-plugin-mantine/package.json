@@ -1,0 +1,46 @@
+{
+  "name": "@devoss/tailwind-plugin-mantine",
+  "version": "1.1.0",
+  "description": "Bringing Mantine and Tailwind CSS together with ease.",
+  "keywords": [
+    "mantine",
+    "tailwind",
+    "tailwindcss"
+  ],
+  "author": "Sajarin M",
+  "contributors": [
+    "hpnzm"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sajarin-M/tailwind-plugin-mantine",
+    "directory": "packages/tailwind-plugin-mantine"
+  },
+  "bugs": {
+    "url": "https://github.com/Sajarin-M/tailwind-plugin-mantine/issues"
+  },
+  "license": "ISC",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "lint": "tsc --noEmit",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "build": "tsup src/index.ts --dts --format esm,cjs",
+    "dev": "tsup src/index.ts --watch --dts --format esm,cjs"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.2",
+    "typescript": "^5.3.3",
+    "@mantine/core": "^7.5.1",
+    "tailwindcss": "^3.4.1"
+  },
+  "peerDependencies": {
+    "@mantine/core": "*",
+    "tailwindcss": "*"
+  }
+}

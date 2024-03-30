@@ -1,37 +1,28 @@
 {
-  "name": "@devoss/tailwind-plugin-mantine",
-  "version": "1.1.0",
-  "description": "Bringing Mantine and Tailwind CSS together with ease.",
-  "keywords": [],
-  "author": "Sajarin M",
-  "license": "ISC",
-  "main": "dist/index.mjs",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.mts",
-  "files": [
-    "dist"
+  "name": "tailwind-plugin-mantine-monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/dev",
+    "packages/tailwind-plugin-mantine"
   ],
   "scripts": {
     "prepare": "husky",
-    "lint": "tsc --noEmit",
-    "clean": "rm -rf node_modules",
+    "lint": "turbo lint",
+    "build": "turbo build",
+    "build:packages": "turbo build --filter=@devoss/tailwind-plugin-mantine",
+    "dev": "turbo dev",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "build": "tsup src/index.ts --dts --format esm",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "pnpm run build && changeset publish"
+    "release": "pnpm run build:packages && changeset publish"
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.27.1"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
     "husky": "^9.0.10",
     "prettier": "^3.2.4",
     "tsup": "^8.0.2",
-    "typescript": "^5.3.3",
-    "@mantine/core": "^7.5.1",
-    "tailwindcss": "^3.4.1"
-  },
-  "peerDependencies": {
-    "@mantine/core": "*",
-    "tailwindcss": "*"
+    "turbo": "^1.13.0"
   }
 }
