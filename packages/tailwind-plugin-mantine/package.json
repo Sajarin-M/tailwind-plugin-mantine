@@ -1,6 +1,6 @@
 {
   "name": "@devoss/tailwind-plugin-mantine",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Bringing Mantine and Tailwind CSS together with ease.",
   "keywords": [
     "mantine",
