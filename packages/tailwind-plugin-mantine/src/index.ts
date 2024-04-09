@@ -1,9 +1,11 @@
 import {
   DEFAULT_THEME,
+  MantineColorsTuple,
   MantineThemeOverride,
   mergeMantineTheme,
 } from "@mantine/core";
 import plugin from "tailwindcss/plugin";
+import { RecursiveKeyValuePair, ResolvableTo } from "tailwindcss/types/config";
 
 const filledVariants = ["filled", "filled-hover"];
 const lightVariants = ["light", "light-hover", "light-color"];
@@ -21,6 +23,9 @@ const otherColors = [
   "default-color",
   "default-border",
 ];
+
+type ColorShade = Record<string, string>;
+
 /**
  *
  * @usage
@@ -47,48 +52,17 @@ const otherColors = [
  */
 export default function pluginMantine(customTheme?: MantineThemeOverride) {
   const theme = mergeMantineTheme(DEFAULT_THEME, customTheme);
+  const colors: ResolvableTo<RecursiveKeyValuePair<string, string>> = {};
 
-  const primaryColorShades = Array.from({ length: 10 }).reduce(
-    (acc, _, index) => {
-      const primaryColor = theme.primaryColor;
-      return {
-        ...(acc as any),
-        [`primary-${index}`]: `var(--mantine-color-${primaryColor}-${index})`,
-      };
-    },
-    {}
-  ) as any;
+  colors.primary = getPrimaryColorShades(theme);
 
-  const colors = Object.entries(theme.colors).reduce(
-    (colorsAcc, [colorName, colorTuple]) => {
-      const shades = colorTuple.reduce((shadeAcc, hexValue, i) => {
-        return {
-          ...shadeAcc,
-          [`${colorName}-${i}`]: `rgb(${hexToRgb(hexValue)} / <alpha-value>)`,
-        };
-      }, {} as any);
+  Object.entries(theme.colors).forEach(([colorName, colorTuple]) => {
+    colors[colorName] = getColorShades(colorName, colorTuple);
+  });
 
-      const variants = makeVariantColors(colorName);
-
-      const others = otherColors.reduce((othersAcc, otherColor) => {
-        return {
-          ...othersAcc,
-          [otherColor]: `var(--mantine-color-${otherColor})`,
-        };
-      }, {});
-
-      return {
-        ...colorsAcc,
-        ...shades,
-        ...variants,
-        ...others,
-      };
-    },
-    {
-      ...makeVariantColors("primary"),
-      ...primaryColorShades,
-    } as any
-  );
+  otherColors.forEach((colorName) => {
+    colors[colorName] = `var(--mantine-color-${colorName})`;
+  });
 
   return plugin(() => {}, {
     darkMode: ["class", '[data-mantine-color-scheme="dark"]'],
@@ -127,13 +101,13 @@ function hexToRgb(hex: string) {
 }
 
 function makeVariantColors(colorName: string) {
-  const concatedVariants = Array.prototype.concat(
+  const concatenatedVariants = Array.prototype.concat(
     filledVariants,
     lightVariants,
-    colorName === "primary" ? [] : outlineVariants
+    colorName === "primary" ? [] : outlineVariants,
   );
 
-  return concatedVariants.reduce((variantsAcc, variant) => {
+  return concatenatedVariants.reduce<ColorShade>((variantsAcc, variant) => {
     const value =
       colorName === "primary"
         ? `var(--mantine-primary-color-${variant})`
@@ -141,7 +115,43 @@ function makeVariantColors(colorName: string) {
 
     return {
       ...variantsAcc,
-      [`${colorName}-${variant}`]: value,
+      [variant]: value,
+    };
+  }, {});
+}
+
+function getPrimaryColorShades(theme: MantineThemeOverride) {
+  let primaryColorShades = Array.from({ length: 10 }).reduce<ColorShade>(
+    (acc, _, index) => {
+      const primaryColor = theme.primaryColor;
+      return {
+        ...acc,
+        [index]: `var(--mantine-color-${primaryColor}-${index})`,
+      };
+    },
+    {},
+  );
+  primaryColorShades.DEFAULT = `var(--mantine-primary-color-filled)`;
+  primaryColorShades = {
+    ...primaryColorShades,
+    ...makeVariantColors("primary"),
+  };
+  return primaryColorShades;
+}
+
+function getColorShades(colorName: string, colorsTuple: MantineColorsTuple) {
+  const shades = colorsTuple.reduce((shadeAcc, hexValue, index) => {
+    return {
+      ...shadeAcc,
+      [index]: `rgb(${hexToRgb(hexValue)} / <alpha-value>)`,
     };
   }, {} as any);
+  shades.DEFAULT = `var(--mantine-color-${colorName}-filled)`;
+
+  const variants = makeVariantColors(colorName);
+
+  return {
+    ...shades,
+    ...variants,
+  };
 }

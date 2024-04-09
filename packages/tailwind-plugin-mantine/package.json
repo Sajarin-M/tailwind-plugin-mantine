@@ -25,7 +25,8 @@
   "types": "dist/index.d.ts",
   "files": [
     "dist",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "README.md"
   ],
   "scripts": {
     "lint": "tsc --noEmit",
