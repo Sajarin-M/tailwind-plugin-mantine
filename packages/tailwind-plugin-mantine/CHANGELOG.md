@@ -1,5 +1,11 @@
 # @devoss/tailwind-plugin-mantine
 
+## 2.1.0
+
+### Minor Changes
+
+- 2eb5b33: Add DEFAULT color for all colors
+
 ## 2.0.0
 
 ### Major Changes
