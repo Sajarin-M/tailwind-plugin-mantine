@@ -29,3 +29,7 @@ const config: Config = {
 };
 export default config;
 ```
+
+# Example
+
+Here is a [Next.js example](https://github.com/Sajarin-M/tailwind-plugin-mantine-example) using the plugin.
